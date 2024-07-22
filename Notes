@@ -1,0 +1,24 @@
+'use client' is used only in client side. You can not use it in server components
+
+Create a folder and a file in it as page.js, then you can navigate. e.g products would be localhost:3000/products
+
+Nested routes are folders created within a folder with page.js file, if i have a product-info folder then localhost:3000/products/products-info
+
+Dynamic routes are: I have 50 products and details pages are different. So I will make a folder with [productDetails] and it will contain every page. localhost:3000/products/product-info/1, the 1 in it is called slug
+
+Now what if we have multiple slugs. To render them all, we use catch all routes. Make a folder with spread operator. [...pageReview] parallel to the folder like [productDetails]. No matter how many slugs, it will render localhost:3000/products/product-info/1/23/35/drgd/sdf/3234/sf
+
+For navigation use <Link href=''></Link> tag or use useRouter.
+
+You can not use Link or useRouter in a server component. so we will use redirect from next/navigation. See example in accounts page
+
+Now we use obtain the current url by using usePathName and to get search param, use useSearchParams(). see in accounts page and cart page
+
+we can use {params} in props to get the dynamic routes. localhost:3000/products/product-info/1/4/2/5/45/234/sdfs/xv
+
+We can use useSearchparams hook in server side. So we use the {searchParams} in props. and console.log it in server side rendering. see in productDetails page. localhost:3000/products/product-info/1?search=1875&productID=hjgdsf. for specific param, use {searchParams.productID} or the param name
+
+
+Loading component. Make a loading.js file, set the styles. Then go into layout page. Add a suspense tag inside body and pass the children inside it. use <loading> tag in the fallback of Suspense.
+
+Custom not found page: make a file in root as not-found.js and style it as per requirements. it wil automatically overlay the existing not found page.
