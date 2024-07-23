@@ -22,3 +22,9 @@ We can use useSearchparams hook in server side. So we use the {searchParams} in 
 Loading component. Make a loading.js file, set the styles. Then go into layout page. Add a suspense tag inside body and pass the children inside it. use <loading> tag in the fallback of Suspense.
 
 Custom not found page: make a file in root as not-found.js and style it as per requirements. it wil automatically overlay the existing not found page.
+
+----------------------------------------------missing parts-------------------------------------------
+
+server side data fetching: Always use separate function for api calling. Rest see code in server-data-fetch. use params to create dynamic page, see [details] folder. 
+
+client side data fetching: use of useSwr hook. {data, error, isLoading}

@@ -1,9 +1,10 @@
+import axios from "axios";
+import Link from "next/link";
 
 async function dataFetching() {
     try {
-        const response = await fetch('https://jsonplaceholder.typicode.com/users');
-        const userData = response.data;
-
+        const response = await axios('https://dummyjson.com/users');
+        const userData = response.data.users;
         return userData;
     } catch (e) {
         console.error(e);
@@ -12,10 +13,18 @@ async function dataFetching() {
 
 export default async function serverSideDataFetching() {
     const fetching = await dataFetching();
-    console.log(fetching);
     return (
-        <div>
-            <h1>This is server side data fetching page</h1>
+        <div className='p-10'>
+            <h1>Server side data fetching: User list page</h1>
+            <ul>
+                {fetching && fetching.length > 0 
+                ? fetching.map(item => {
+                        return <li key={item.id} className='mt-5 cursor-pointer'>
+                           <Link href={`/server-data-fetch/${item.id}`} > {item.firstName}</Link>
+                            </li>
+                    })
+                : null}
+            </ul>
         </div>
     );
-}
+};;
