@@ -1,8 +1,7 @@
-import axios from 'axios';
 
 async function dataFetching() {
     try {
-        const response = await axios.get('https://dummyjson.com/users');
+        const response = await fetch('https://jsonplaceholder.typicode.com/users');
         const userData = response.data;
 
         return userData;
